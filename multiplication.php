@@ -13,15 +13,17 @@ $ligne_modifier = 0;
 //getdata
 $a = isset($_GET["a"]) ? $_GET["a"] : 0;
 $b = isset($_GET["b"]) ? $_GET["b"] : 0;
-$ligne_suppr = isset($_GET["ligne"]) ? $_GET["ligne"] : null;
-$ligne_modifier = isset($_GET['modifier']) ? $_GET['modifier'] : null;
-$mod = isset($_GET['modifier_ligne']) ? $_GET['modifier_ligne'] : null;
+
 $tmp_a = isset($_GET["cur_a"]) ? $_GET["cur_a"] : 0;
 $tmp_b = isset($_GET["cur_b"]) ? $_GET["cur_b"] : 0;
 $tmp_x = isset($_GET["cur_x"]) ? $_GET["cur_x"] : 0;
 $mod_a = isset($_GET["mod_a"]) ? $_GET["mod_a"] : $a;
 $mod_b = isset($_GET["mod_b"]) ? $_GET["mod_b"] : 0;
 $mod_x = isset($_GET["mod_x"]) ? $_GET["mod_x"] : 0;
+
+$ligne_suppr = isset($_GET["ligne"]) ? $_GET["ligne"] : null;
+$ligne_modifier = isset($_GET['modifier']) ? $_GET['modifier'] : null;
+$mod = isset($_GET['modifier_ligne']) ? $_GET['modifier_ligne'] : null;
 
 // Verifier si a ou b a change pour vider la session
 if ($_SESSION['a_val'] != $a || $_SESSION['b_val'] != $b) {
@@ -96,7 +98,8 @@ echo "<html>
         <body>";
 
 if ($ligne_modifier == null) {
-    echo "<div>
+    
+    echo " <div>  
                 <table>
                     <caption>Table de Multiplication</caption>
                     <thead>
@@ -119,8 +122,10 @@ if ($ligne_modifier == null) {
                             <td> {$row['b']} </td>   
                             <td> {$row['x']} </td>
                             <td>
-                                <a href=\"http://www.manou.mg/multiplication.php?a=$a&b=$b&modifier=$i&cur_a=$tmp_a&cur_b=$tmp_b&cur_x=$tmp_x\" > <button> Modifier </button> </a>  
-                                <a href=\"http://www.manou.mg/multiplication.php?a=$a&b=$b&ligne=$i\" > Supprimer </a> 
+                                <div class=\"action\">
+                                <a href=\"http://www.mit.mg/multiplication.php?a=$a&b=$b&modifier=$i&cur_a=$tmp_a&cur_b=$tmp_b&cur_x=$tmp_x\" > <button> Modifier </button> </a>  
+                                <a href=\"http://www.mit.mg/multiplication.php?a=$a&b=$b&ligne=$i\" > Supprimer </a> 
+                                </div>
                             </td>
                         </tr>";
         }
